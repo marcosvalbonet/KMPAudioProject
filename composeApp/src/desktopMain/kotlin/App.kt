@@ -81,19 +81,6 @@ fun startAudioRecording(onFinish: () -> Unit) {
 
     }
 
-//    val audioRecorderThread = Thread {
-//        val recordingStream = AudioInputStream(targetLine)
-//        val outputFile = File("record.wav")
-//        val fileOutputStream = FileOutputStream(outputFile)
-//        try {
-//            AudioSystem.write(recordingStream, javax.sound.sampled.AudioFileFormat.Type.WAVE, fileOutputStream)
-//        } catch (e: IOException) {
-//            println(e)
-//        }
-//    }
-//
-//    audioRecorderThread.start()
-
     sleep(3000)
     println("Stopped recording")
     onFinish()
@@ -121,46 +108,4 @@ fun saveAudioToFile(audioData: ByteArray, format: AudioFormat) {
     }
 }
 
-/*
-https://www.youtube.com/watch?v=WSyTrdjKeqQ&ab_channel=MaxO%27Didily
-TODO: create this example in this code
- */
-//fun getMicrophoneAudio(isActive: Boolean){
-//    val format = AudioFormat(44100.0f, 16, 2, true, true)
-//    val info = DataLine.Info(TargetDataLine::class.java, format)
-//
-//    if (!AudioSystem.isLineSupported(info)) {
-//        println("Line not supported")
-//        return
-//    }
-//
-//    val line = AudioSystem.getLine(info) as TargetDataLine
-//    line.open(format)
-//    line.start()
-//
-//    println("Start capturing audio...")
-//
-//    val buffer = ByteArray(4096)
-//    val out = ByteArrayOutputStream()
-//
-//    val job = CoroutineScope(Dispatchers.IO).launch {
-//        while (isActive) {
-//            val count = line.read(buffer, 0, buffer.size)
-//            if (count > 0) {
-//                out.write(buffer, 0, count)
-//            }
-//        }
-//    }
-//
-//    println("Press Enter to stop...")
-//    readLine()
-//    job.cancel()
-//
-//    line.stop()
-//    line.close()
-//
-//    println("Stopped capturing audio.")
-//
-//    // Aquí puedes procesar el audio capturado en `out.toByteArray()`
-//}
 
